@@ -1,5 +1,6 @@
 (ns cojira.core
-  (:require [clj-http.client :as client])
+  (:require [clj-http.client :as http]
+            [clojure.string :as str])
   (:gen-class))
 
 (comment"
@@ -23,13 +24,22 @@
 
   *oh god this is going to be fun to organise as a project*")
 
-(defn request
-  "make an api request to some place"
-  [target]
-  (client/get target))
+(defn lichessbotrequest [target token]
+  "tell lichess that this is a bot account"
+  (let [response
+        (http/get target {:headers {"Authorization: Bearer" token}})]
+    ;; if it's successful, print the response
+    (fn [res]
+      (format "accepted, got: " res))
+    ;; otherwise, throw the exception we got
+    (fn [exception]
+      (format "negative, got: " (.getMessage exception)))))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (println (request "https://lichess.org/api"))
+  (def token "hi")
+  (println (lichessbotrequest "https://lichess.org/api/account" token))
+
   (println "Hello, World!"))
+
