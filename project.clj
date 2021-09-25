@@ -7,6 +7,7 @@
                  [clj-http "3.12.3"]
                  [babashka/babashka.curl "0.0.2"]
                  [cheshire "5.10.0"]]
+  :plugins [[cider/cider-nrepl "0.24.0"]]
   :main ^:skip-aot cojira.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all

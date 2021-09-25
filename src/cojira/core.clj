@@ -33,11 +33,11 @@
     (fn [resp]
       (format "niceu! you got: %s" (json/parse-string (:body resp))))
     (fn [exception]
-      (println "got an exception:" (.getMessage exception)))))
+      (format "got an exception: %s" (.getMessage exception)))))
 
 (defn -main [& args]
   "I don't do a whole lot ... yet."
   (def token "lip_3s8d3QczxcaCZYxGkh3T")
   (def url "https://lichess.org/api/account")
-  (println (requestforbot url token)))
+  (requestforbot url token))
 
