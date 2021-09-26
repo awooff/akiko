@@ -1,5 +1,7 @@
 (ns cojira.core
   (:require [clj-http.client :as http]
+            [babashka.curl :as curl]
+            [cheshire.core :refer :all :as json]
             [clojure.string :as str])
   (:gen-class))
 
@@ -24,22 +26,20 @@
 
   *oh god this is going to be fun to organise as a project*")
 
-(defn lichessbotrequest [target token]
-  "tell lichess that this is a bot account"
-  (let [response
-        (http/get target {:headers {"Authorization: Bearer" token}})]
-    ;; if it's successful, print the response
-    (fn [res]
-      (format "accepted, got: " res))
-    ;; otherwise, throw the exception we got
+(defn requestforbot [target token]
+  "upgrade the current account to a bot account"
+  (def auth (format "Bearer %s" token))
+  (http/get target {:headers {"Authorization" auth}}
+    ;; if it's valid, then return the body as a parsed json string
+    (fn [resp]
+      (format "niceu! you got: %s" (json/parse-string (:body resp))))
+    ;; otherwise, throw the exception we get.
     (fn [exception]
-      (format "negative, got: " (.getMessage exception)))))
+      (println "got an exception:" (.getMessage exception)))))
 
-(defn -main
+(defn -main [& args]
   "I don't do a whole lot ... yet."
-  [& args]
-  (def token "hi")
-  (println (lichessbotrequest "https://lichess.org/api/account" token))
-
-  (println "Hello, World!"))
+  (def token "lip_3s8d3QczxcaCZYxGkh3T")
+  (def url "https://lichess.org/api/account")
+  (println (requestforbot url token)))
 
