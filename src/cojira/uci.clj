@@ -5,6 +5,15 @@
   (:use [clojure.java.shell :only [sh]])
   (:gen-class))
 
+(defn init [self & arg]
+  "init the enginerunner class"
+  (defstruct Engine {
+    :name string
+    :path string
+    :isbot false
+    }))
+
+
 (defmacro with-timeout [millis & body]
   "await a certain amount of time before stopping execution of a function.
   example :: ->
@@ -17,12 +26,6 @@
         (do
           (future-cancel future#)
           nil)))))
-
-(defstruct Engine {
-  :name string
-  :path string
-  :isbot false
-  })
 
 ;; => TODO: add support for multiple engines being executed on different threads
 (defn startengine [engine_name engine_path]
