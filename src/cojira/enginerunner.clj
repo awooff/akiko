@@ -14,9 +14,6 @@
   executes any command given as a string.
   ")
 
-(defn init [self & arg]
-  (format "this is cojira.enginerunner"))
-
 (defn shellcmd [cmd-str]
   "run any command from the java shell.
   example :: ->
@@ -35,8 +32,30 @@
           "result:"      (:out  result) "\n"
         ))))))
 
-(let [result
-  (run-shell-cmd "ls -al")]
-    (newline)
-    (println :ls-cmd)
-    (println result))
+(defmacro with-timeout [millis & body]
+  "await a certain amount of time before stopping execution of a function.
+  example :: ->
+  (macroexpand '(with-timeout 1000 (fn []
+    (println \"hewwo\"))))"
+  `(let [future# (future ~@body)]
+    (try
+      (.get future# ~millis java.util.concurrent.TimeUnit/MILLISECONDS)
+      (catch java.util.concurrent.TimeoutException x#
+        (do
+          (future-cancel future#)
+          nil)))))
+
+;; => TODO: add support for multiple engines being executed on different threads
+(defn startengine [engine_name engine_path]
+  "start the user's chosen engine"
+  (struct Engine engine_name engine_path isbot)
+  ((.exists (io/file (format "%s/%s" engine_path engine_name)))
+    (.isDirectory (io/file "/engines/"))
+      (macroexpand ('with-timeout (* 1 1000) fn []
+        (let [result
+          (run-shell-cmd (format "./engines/%s/%s" engine_path engine_name))]
+            (newline)
+            (println :ls-cmd)
+            (println result))))))
+
+

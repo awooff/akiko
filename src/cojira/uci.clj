@@ -1,18 +1,9 @@
 (ns cojira.uci
-  (:require [clojure.string :as string ]
-            [clj-http.client :as http])
-            [clojure.java.io :as io]
+  (:require [clojure.string :as string]
+            [clj-http.client :as http]
+            [clojura.java.io :as io])
   (:use [clojure.java.shell :only [sh]])
   (:gen-class))
-
-(defn init [self & arg]
-  "init the enginerunner class"
-  (defstruct Engine {
-    :name string
-    :path string
-    :isbot false
-    }))
-
 
 (defmacro with-timeout [millis & body]
   "await a certain amount of time before stopping execution of a function.
@@ -30,8 +21,10 @@
 ;; => TODO: add support for multiple engines being executed on different threads
 (defn startengine [engine_name engine_path]
   "start the user's chosen engine"
-  (struct Engine engine_name engine_path isbot)
-  (.exists (io/file (format "%s/%s" engine_path engine_name))))
+  ((.exists (io/file (format "%s/%s" engine_path engine_name)))
+    (.isDirectory (io/file "/engines/"))
+      (macroexpand ('with-timeout (* 1 1000) fn []
+        ))))
 
 (defn readuci [cmd & arg]
   "read from the engine's UCI output and post it to lichess"
