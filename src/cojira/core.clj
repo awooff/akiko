@@ -30,8 +30,10 @@
   "upgrade the current account to a bot account"
   (def auth (format "Bearer %s" token))
   (http/get target {:headers {"Authorization" auth}}
+    ;; if it's valid, then return the body as a parsed json string
     (fn [resp]
       (format "niceu! you got: %s" (json/parse-string (:body resp))))
+    ;; otherwise, throw the exception we get.
     (fn [exception]
       (format "got an exception: %s" (.getMessage exception)))))
 
