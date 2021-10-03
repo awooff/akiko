@@ -35,9 +35,13 @@
     (fn [exception]
       (format "got an exception: %s" (.getMessage exception)))))
 
+(requestforbot "https://lichess.org/api/account" "lip_3s8d3QczxcaCZYxGkh3T")
+
 (defn -main [& args]
   "I don't do a whole lot ... yet."
   (def token "lip_3s8d3QczxcaCZYxGkh3T")
   (def url "https://lichess.org/api/account")
   (requestforbot url token))
+
+(-main)
 
