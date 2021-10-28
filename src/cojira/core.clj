@@ -1,6 +1,5 @@
 (ns cojira.core
   (:require [clj-http.client :as http]
-            [babashka.curl :as curl]
             [cheshire.core :refer :all :as json]
             [clojure.string :as str])
   (:gen-class))

@@ -1,9 +1,8 @@
 (ns cojira.enginerunner
-  (:require [clojure.string :as str]
-            [babashka.curl :as curl]
-            [clj-http.client :as http])
+  (:require [clj-http.client :as http]
             [clojure.java.io :as io]
-  (:use [clojure.java.shell :only [sh]]
+            [clojurewerkz.propertied.properties :as prop])
+  (:use [clojure.java.shell :only [sh]])
   (:gen-class))
 
 (comment"
@@ -11,8 +10,7 @@
   runs the engine so UCI can start reading from the engine output stream.
 
   ## shellcmd
-  executes any command given as a string.
-  ")
+  executes any command given as a string.")
 
 (defn shellcmd [cmd-str]
   "run any command from the java shell.
@@ -21,8 +19,8 @@
     (newline)
     (println :ls-cmd)
     (println result))"
-  (let [result (sh *os-shell* "-c" cmd-str)]
-    (if (= 0 (t/safe-> :exit result))
+  (let [result (sh "-c" cmd-str)]
+    (if (= 0 (.waitFor result))
       result
       (throw (RuntimeException.
         (str "shell-cmd: clojure.java.shell/sh failed. \n"
@@ -33,29 +31,24 @@
         ))))))
 
 (defmacro with-timeout [millis & body]
-  "await a certain amount of time before stopping execution of a function.
-  example :: ->
-  (macroexpand '(with-timeout 1000 (fn []
-    (println \"hewwo\"))))"
-  `(let [future# (future ~@body)]
-    (try
-      (.get future# ~millis java.util.concurrent.TimeUnit/MILLISECONDS)
-      (catch java.util.concurrent.TimeoutException x#
-        (do
-          (future-cancel future#)
-          nil)))))
+		"let's not keep processes hanging too long by setting a maximum timeout for them.
+		for example, if a connection request is getting stuck, or there's an error in the bot's code,
+		we can just have it stop automatically and throw an error as to what process it was stuck on."
+		(def body (agent 0))	;; give the body an agent
+		(send-off body) ;; send it off?
+		(await-for millis body) ;; wait for a number of milis to return the result of the body
+		(shutdown-agents)) ;; then just shut down the worker thread.
+
+(defn get-properties [& filepath]
+		"we'll need to retrieve the config.properites so ppl can just put in the path
+		to their engines instead of screwing around with source code."
+		(println "hewoo"))
 
 ;; => TODO: add support for multiple engines being executed on different threads
-(defn startengine [engine_name engine_path]
+(defn startengine [& args]
   "start the user's chosen engine"
-  (struct Engine engine_name engine_path isbot)
-  ((.exists (io/file (format "%s/%s" engine_path engine_name)))
-    (.isDirectory (io/file "/engines/"))
-      (macroexpand ('with-timeout (* 1 1000) fn []
-        (let [result
-          (run-shell-cmd (format "./engines/%s/%s" engine_path engine_name))]
-            (newline)
-            (println :ls-cmd)
-            (println result))))))
-
-
+  (def config (prop/load-from (io/resource "config.properties")))
+   (.isDirectory (io/file "/engines/"))
+   	(macroexpand with-timeout 1000, (fn []
+   		(def config get-properties)
+   		(shellcmd "echo hewwo"))))
