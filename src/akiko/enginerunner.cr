@@ -6,6 +6,9 @@ module Akiko
   SERVER = "lichess.org/api/account"
 
   class Start
+    # This function should authorize the bot & automatically upgrade it to a bot account.
+    # Smol feature but I think it's still cool.
+    # Takes *token* as an argument.
     def authorize_bot(token : String)
       reqtoken = "Bearer #{token}"
       HTTP::Client.get("https://#{SERVER}", HTTP::Headers{"Authorization" => reqtoken}) do |res|
@@ -14,12 +17,13 @@ module Akiko
       end
     end
 
-    def engine(name : String, binary : String)
+    # We're only doing UCI compatability for now
+    def create_engine(name : String, binary : String)
       cmd = "./engines/#{name}/#{binary}"
       Process.exec("sh", {"-c", cmd})
     end
   end
 
   v = Start.new
-  v.engine("ctengine-rs", "target/release/ctengine")
+  v.create_engine("ctengine-rs", "target/release/ctengine")
 end

@@ -17,7 +17,11 @@ module Akiko
   alias Binary = String
 
   # For useful error annotations later on.
-  annotation Error
+  annotation NetError
+  end
+
+  # What we want for the default results of our API callbacks
+  annotation APICallback
   end
 
   # We want to turn all `Event` instances into json so we can easily handle responses
@@ -53,6 +57,7 @@ module Akiko
     end
   end
 
+  @[APICallback(value: 200, name: "Success")]
   class Akiko
     def __main__
       e0 = ServerConnection.new("0.0.0.0")

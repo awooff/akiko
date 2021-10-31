@@ -10,6 +10,7 @@ end
 
 class ConfigParse < Config
   include YAML::Serializable
+
   yaml = YAML.parse(File.read("./config.yml") { |file| YAML.parse(file) })
   yaml.class
   hash = yaml.as_h
