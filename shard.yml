@@ -1,0 +1,13 @@
+name: akiko
+version: 0.1.0
+
+authors:
+  - harlycxss <hana19.nf@protonmail.ch>
+
+targets:
+  akiko:
+    main: src/akiko.cr
+
+crystal: 1.2.1
+
+license: MIT
