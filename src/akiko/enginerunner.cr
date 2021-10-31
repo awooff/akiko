@@ -15,11 +15,11 @@ module Akiko
     end
 
     def engine(name : String, binary : String)
-      cmd = "./#{name}/#{binary}"
-      Process.exec("sh", {"-c", command}, output: io)
+      cmd = "./engines/#{name}/#{binary}"
+      Process.exec("sh", {"-c", cmd})
     end
   end
 
   v = Start.new
-  v.engine("ctengine-rs", "/target/release/ctengine")
+  v.engine("ctengine-rs", "target/release/ctengine")
 end

@@ -4,6 +4,8 @@ require "http/client"
 require "json"
 require "colorizer"
 
+require "./akiko"
+
 module Akiko
   VERSION = "0.1.0"
   CONFIG  = "../config.yml"
