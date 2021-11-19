@@ -1,41 +1,27 @@
-# cojira
+# akiko
 
-FIXME: description
+TODO: Write a description here
 
 ## Installation
 
-Download from https://gitlab.com/harlycxss/cojira/releases/
+TODO: Write installation instructions here
 
 ## Usage
 
-FIXME: explanation
+TODO: Write usage instructions here
 
-    `java -jar cojira-0.1.0-standalone.jar [args]`
+## Development
 
-## Options
+TODO: Write development instructions here
 
-FIXME: listing of options this app accepts.
+## Contributing
 
-## Examples
+1. Fork it (<https://github.com/your-github-user/akiko/fork>)
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
 
-...
+## Contributors
 
-### Bugs
-
-...
-
-### Todo
-
-- make a connection with the lichess API
-- communicate with the UCI engine
-- show stdout input a console window
-
-### Any Other Sections
-
-### That You Think
-
-### Might be Useful
-
-## License
-
-copyright is a myth
+- [harlycxss](https://github.com/your-github-user) - creator and maintainer

@@ -1,0 +1,10 @@
+# put all ur engines here starting with the name, the name of their binary
+# and its token.
+name: "myengine"              # make sure that this is the folder where your engine is
+  binary: "engine"            # this should be the location of your binary
+  token: "lip_xxxxXXXXxxxx"   # and ofc put your token here
+
+# and just keep going like this
+name: "mysecondengine"
+  binary: "release/engine.jar"
+  token: "lip_xxxxXXXXxxxx"
