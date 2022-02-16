@@ -2,7 +2,7 @@ name: akiko
 version: 0.1.0
 
 authors:
-  - harlycxss <hana19.nf@protonmail.ch>
+  - kaelta <giorox.612nf@gmail.com>
 
 dependencies:
   lichess-cr:
@@ -14,4 +14,4 @@ targets:
 
 crystal: 1.2.1
 
-license: MIT
+license: ISC

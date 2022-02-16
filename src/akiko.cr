@@ -36,6 +36,8 @@ module Akiko
     }
   end
 
+  # Every single new engine from the config should have the properties of *token*,
+  # *binary* and *name* at the very least.
   abstract struct EngineTemplate
     def initialize(@name : Engine)
       @binary : String
@@ -50,6 +52,8 @@ module Akiko
     end
   end
 
+  # Alias all the engine moves to a struct; each move is an instance of this struct with
+  # specific properties that we use in the HTTP request to lichess.
   struct EngineMove < Event
     getter engine, piece
 
