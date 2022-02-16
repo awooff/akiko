@@ -1,6 +1,0 @@
-[submodule "engines/ctengine-rs"]
-	path = engines/ctengine-rs
-	url = https://gitlab.com/izzuishere/ctengine-rs.git
-[submodule "lichess-cr"]
-	path = lichess-cr
-	url = ./lichess-cr

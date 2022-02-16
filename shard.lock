@@ -1,2 +1,6 @@
 version: 2.0
-shards: {}
+shards:
+  lichess-cr:
+    git: https://gitlab.com/kaelta/lichess-cr.git
+    version: 0.1.0+git.commit.6d3f47505fa8117e53891f0a6e2ba3a518c6b31d
+
