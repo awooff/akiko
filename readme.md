@@ -12,7 +12,15 @@ TODO: Write usage instructions here
 
 ## Development
 
-TODO: Write development instructions here
+After cloning this repo, run `shards` to pull the *lichess-cr* repo.
+*lichess-cr* is specifically for handling piece validation, which we will need to ensure that
+the moves being played by the engine are valid, & if not, handle the errors client-side rather than
+on lichess' server side.
+
+If you're on VSCode,
+`git clone https://gitlab.com/kaelta/lichess-cr.git`
+
+Then add the *lichess-cr* & *cojira* folders to the current workspace. There, now you're a 10x developer! Or something.
 
 ## Contributing
 
