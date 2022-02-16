@@ -3,9 +3,9 @@ require "json"
 require "colorize"
 
 module Akiko
-  SERVER = "lichess.org/api/account"
 
   class Start
+    SERVER = "lichess.org/api/account"
     # This function should authorize the bot & automatically upgrade it to a bot account.
     # Smol feature but I think it's still cool.
     # Takes *token* as an argument.

@@ -2,7 +2,7 @@
 
 require "http/client"
 require "json"
-require "colorizer"
+require "colorize"
 
 require "./akiko"
 
@@ -67,6 +67,6 @@ module Akiko
     end
   end
 
-  main = Akiko.new
-  main.__main__
+  akiko = Akiko.new
+  akiko.__main__
 end
