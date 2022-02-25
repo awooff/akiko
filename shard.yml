@@ -8,6 +8,11 @@ dependencies:
   lichess-cr:
     gitlab: kaelta/lichess-cr
 
+development_dependencies:
+  crystalline:
+    github: elbywan/crystalline
+    branch: master
+
 targets:
   akiko:
     main: src/akiko.cr

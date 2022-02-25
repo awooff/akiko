@@ -1,6 +1,22 @@
 version: 2.0
 shards:
+  bisect:
+    git: https://github.com/spider-gazelle/bisect.git
+    version: 1.2.1
+
+  crystalline:
+    git: https://github.com/elbywan/crystalline.git
+    version: 0.5.0+git.commit.b7a203d0e5d4e37bbe744b371fca77868aca8f71
+
   lichess-cr:
     git: https://gitlab.com/kaelta/lichess-cr.git
-    version: 0.1.0+git.commit.6d3f47505fa8117e53891f0a6e2ba3a518c6b31d
+    version: 0.1.0+git.commit.51bcb213faee801f92658640067bffff81292cb9
+
+  priority-queue:
+    git: https://github.com/spider-gazelle/priority-queue.git
+    version: 1.0.1
+
+  version_from_shard:
+    git: https://github.com/hugopl/version_from_shard.git
+    version: 1.2.5
 

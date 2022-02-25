@@ -1,5 +1,6 @@
 # TODO: Write documentation for `Akiko`
 
+require "lichess-cr"
 require "http/client"
 require "json"
 require "colorize"
@@ -10,11 +11,6 @@ module Akiko
   VERSION = "0.1.0"
   CONFIG  = "../config.yml"
   SERVER  = "https://lichess.org"
-
-  # Alias the most important things to us rn
-  alias Token = String
-  alias Engine = String
-  alias Binary = String
 
   # For useful error annotations later on.
   annotation NetError
@@ -36,19 +32,10 @@ module Akiko
     }
   end
 
-  # Every single new engine from the config should have the properties of *token*,
-  # *binary* and *name* at the very least.
-  abstract struct EngineTemplate
-    def initialize(@name : Engine)
-      @binary : String
-      @token : Token
-    end
-  end
-
   struct ServerConnection < Event
     getter engine
 
-    def initialize(@engine : Engine)
+    def initialize(@@engine : String)
     end
   end
 
@@ -57,20 +44,12 @@ module Akiko
   struct EngineMove < Event
     getter engine, piece
 
-    def initialize(@engine : Engine, @move : String)
+    def initialize(@@engine : String, @move : String)
     end
   end
 
-  @[APICallback(value: 200, name: "Success")]
-  class Akiko
-    def __main__
-      e0 = ServerConnection.new("0.0.0.0")
-      e1 = EngineMove.new("0.0.0.0", "e2e4")
-      p e0.to_json
-      p e1.to_json
-    end
-  end
-
-  akiko = Akiko.new
-  akiko.__main__
+  e0 = ServerConnection.new("0.0.0.0")
+  e1 = EngineMove.new("0.0.0.0", "e2e4")
+  p e0.to_json
+  p e1.to_json
 end
