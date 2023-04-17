@@ -30,7 +30,7 @@ module Akiko
         self.send_reply(line, "Waiting 60 seconds...")
       when "name"
         self.send_reply(line, "Waiting 60 seconds...")
-        self.xhr.chat(@@game.id, line.room, reply)
+        self.xhr.chat(self.game.id, line.room, reply)
       end
     end
   end
