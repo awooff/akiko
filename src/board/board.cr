@@ -2,8 +2,8 @@ require "./piece"
 require "./constants"
 require "../move_check/knight"
 require "../move_check/bishop"
-require "../move_check/rook_move_checker"
-require "../move_check/queen_move_checker"
+require "../move_check/rook_"
+require "../move_check/queen"
 require "../algebraic_coordinates"
 
 module Board
