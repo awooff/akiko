@@ -15,6 +15,6 @@ if __name__ == '__main__':
     os.system(f'cd {ctng} && cargo r --release')
     sys.exit(0)
   else:
-    print('did you clone the repo properly you fucking retard')
+    print('did you clone the repo properly...')
     sys.exit(404)
     
