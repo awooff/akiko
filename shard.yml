@@ -2,7 +2,7 @@ name: akiko
 version: 0.1.0
 
 authors:
-  - kaelta <giorox.612nf@gmail.com>
+  - kaelta <m@kae.si>
 
 dependencies:
   lichess-cr:

@@ -21,6 +21,7 @@ module Akiko
     abstract def restart
     abstract def halt
   end
+
   class Engine < EngineTemplate
     # This function should authorize the bot with the provided *token* & automatically upgrade it to a bot account.
     # Smol feature but I think it's still cool.
@@ -35,7 +36,16 @@ module Akiko
     # We're only doing UCI compatability for now
     private def run(@@name : String, @@binary : String)
       cmd = "./engines/#{name}/#{binary}"
-      spawn Process.exec("sh", {"-c", cmd})
+      {% if flag?(:linux) %}
+        # Linux
+        spawn Process.exec("sh", {"-c", cmd})
+      {% elsif flag?(:darwin) %}
+        # Mac
+        spawn Process.exec("sh", {"-c", cmd})
+      {% elsif flag?(:win32) %}
+        # Windows
+        spawn Process.exec({cmd})
+      {% end %}
       channel.send(1)
     end
 
