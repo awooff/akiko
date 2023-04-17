@@ -1,5 +1,5 @@
 module Board
-  VERSION = "0.1.0"
+  VERSION = Akiko::VERSION
 
   KING   = Piece::King
   QUEEN  = Piece::Queen

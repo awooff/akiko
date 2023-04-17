@@ -2,9 +2,9 @@ require "./piece"
 require "./constants"
 require "../move_check/knight"
 require "../move_check/bishop"
-require "../move_check/rook_"
+require "../move_check/rook"
 require "../move_check/queen"
-require "../algebraic_coordinates"
+require "./algebraic_coordinates"
 
 module Board
   class ChessBoard

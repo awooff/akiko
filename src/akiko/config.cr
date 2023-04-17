@@ -1,17 +1,12 @@
 require "yaml"
 
 class Config
-  YAML.mapping(
-    name : String,
-    binary : String,
-    token : String
-  )
-end
-
-class ConfigParse < Config
   include YAML::Serializable
 
-  yaml = YAML.parse(File.read("./config.yml") { |file| YAML.parse(file) })
+  def initialize(file)
+  end
+
+  yaml = YAML.parse(File.read("./config.yml"))
   yaml.class
   hash = yaml.as_h
   hash.class
@@ -20,4 +15,4 @@ class ConfigParse < Config
   yaml["token"].as_s
 end
 
-p Config.from_yaml(yaml)
+p Config.from_yaml("../../config.yml")
