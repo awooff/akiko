@@ -1,3 +1,3 @@
-require "../board"
+require "../board/builder"
 
-puts Board::BoardBuilder.initial_board
+puts Chess::BoardBuilder.initial_board

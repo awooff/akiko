@@ -2,6 +2,7 @@ require "http/client"
 require "json"
 require "colorize"
 require "./config"
+require "athena"
 
 module Akiko
   <<-DOC
@@ -9,6 +10,10 @@ module Akiko
     *binary* and *name* at the very least.
   DOC
 
+  class EngineController < ATH::Controller
+    @[ATHA::QueryParam("engine", engine : Engine)]
+
+  end
   abstract class EngineTemplate
     enum RunStatus
       Halted  # => 0

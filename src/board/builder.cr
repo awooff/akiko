@@ -5,12 +5,12 @@ require "./algebraic_coordinates"
 
 module Chess
   class BoardBuilder
-    def self.empty
-      Board.new
+    def self.empty?
+      Board::ChessBoard.new
     end
 
     def self.initial_board
-      empty.tap do |board|
+      empty?.tap do |board|
         # white base rank
         board[AlgebraicCoordinates.new("a1")] = ChessPiece.new_white(ROOK)
         board[AlgebraicCoordinates.new("b1")] = ChessPiece.new_white(KNIGHT)

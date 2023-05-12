@@ -1,4 +1,5 @@
 require "./move_check"
+require "../board/coordinates"
 
 module Board
   # 3.6 The knight may move to one of the squares nearest to that on which it stands but not on the same rank, file or diagonal.

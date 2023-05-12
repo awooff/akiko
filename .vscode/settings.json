@@ -1,0 +1,8 @@
+{
+    "crystal-lang.compiler": "/opt/homebrew/bin/crystal",
+    "crystal-lang.completion": true,
+    "crystal-lang.hover": true,
+    "crystal-lang.implementations": true,
+    "crystal-lang.server": "/Users/Cass/Applications/crystalline/bin/crystalline",
+    "editor.fontSize": 14.5
+}

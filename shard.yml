@@ -5,8 +5,19 @@ authors:
   - kaelta <m@kae.si>
 
 dependencies:
-  lichess-cr:
-    gitlab: kaelta/lichess-cr
+  # Load yaml configs.
+  envyable:
+    github: philnash/envyable.cr
+  # Redis DB client for auth, caching etc.
+  redis:
+    github: stefanwille/crystal-redis
+  # We'll need DI for this project.
+  athena:
+    github: athena-framework/framework
+    version: ~> 0.18.0
+  # Grafana dashboard integration
+  crafana:
+    github: spoved/crafana.cr
 
 development_dependencies:
   crystalline:

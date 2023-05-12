@@ -8,7 +8,7 @@ require "./algebraic_coordinates"
 
 module Board
   class ChessBoard
-    def initialize
+    protected def initialize
       @ranks = Array(Array(ChessPiece?)).new(8) do
         Array(ChessPiece?).new(8, nil)
       end
