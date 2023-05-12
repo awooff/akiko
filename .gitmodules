@@ -1,0 +1,6 @@
+[submodule "engines/crystalnn"]
+	path = engines/crystalnn
+	url = https://github.com/MoonstoneLight/Crystal-NN
+[submodule "engines/Stockfish"]
+	path = engines/Stockfish
+	url = https://github.com/official-stockfish/Stockfish
