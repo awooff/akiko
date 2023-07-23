@@ -7,8 +7,8 @@ require "../move_check/queen"
 require "./algebraic_coordinates"
 
 module Board
-  class ChessBoard
-    protected def initialize
+  class Board
+    def initialize
       @ranks = Array(Array(ChessPiece?)).new(8) do
         Array(ChessPiece?).new(8, nil)
       end

@@ -10,10 +10,6 @@ module Akiko
     *binary* and *name* at the very least.
   DOC
 
-  class EngineController < ATH::Controller
-    @[ATHA::QueryParam("engine", engine : Engine)]
-
-  end
   abstract class EngineTemplate
     enum RunStatus
       Halted  # => 0
@@ -70,7 +66,7 @@ module Akiko
     struct EngineMove < Event
       getter engine, piece
 
-      def initialize(@@engine : String, @move : String)
+      def initialize(@engine : String, @move : String)
       end
     end
 
@@ -112,7 +108,7 @@ module Akiko
     end
 
     # We're only doing UCI compatability for now
-    def run(@@engine : String, @@binary : String)
+    def run(@engine : String, @binary : String)
       cmd = "./engines/#{engine}/#{binary}"
       {% if flag?(:linux) %}
         # Linux

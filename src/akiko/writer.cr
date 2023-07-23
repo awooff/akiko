@@ -4,7 +4,6 @@ module WriterInterface
   abstract def write(key, value) : Nil
 end
 
-
 @[ADI::Register]
 class RedisClient
   include WriterInterface
@@ -41,7 +40,7 @@ class Worker
 
   def do_work
     # Do some work
-    @writer.write "did work"
+    @writer.write "did work", 1
   end
 end
 
