@@ -19,5 +19,10 @@
   # https://devenv.sh/processes/
   # processes.ping.exec = "ping example.com";
 
+  # Services
+  services.redis = {
+    enable = true;
+  };
+
   # See full reference at https://devenv.sh/reference/options/
 }
