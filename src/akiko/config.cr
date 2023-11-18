@@ -1,7 +1,9 @@
 require "envyable"
 
 module Akiko
-  def read
-    Envyable.load("../../config.yml", "development")
+  class Config
+    def read
+      Envyable.load("../../config.yml", "development")
+    end
   end
 end
