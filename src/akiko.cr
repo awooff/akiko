@@ -21,7 +21,7 @@ require "./akiko/**"
 
 module Akiko
   VERSION = "0.1.5"
-  SERVER  = "https://lichess.org"
+  SERVER  = "https://lichess.org/api"
 
   config = Akiko::Config.new
 

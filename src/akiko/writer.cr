@@ -43,6 +43,3 @@ class Worker
     @writer.write "did work", 1
   end
 end
-
-# Grab out worker instance from the container and see what work it does.
-ADI.container.worker.do_work # => Wrote data

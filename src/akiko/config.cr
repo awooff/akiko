@@ -9,6 +9,7 @@ module Akiko
 
   class Config
     def initialize
+      @mode = ENV["EXEC_ENV"]
       config = Envyable.load("./config.yml", "development").to_json
       config
     end
