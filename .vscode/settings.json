@@ -4,5 +4,6 @@
     "crystal-lang.hover": true,
     "crystal-lang.implementations": true,
     "crystal-lang.server": "/Users/Cass/Applications/crystalline/bin/crystalline",
-    "editor.fontSize": 14.5
+    "editor.fontSize": 14.5,
+    "crystal-lang.processesLimit": 5
 }

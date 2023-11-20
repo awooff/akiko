@@ -3,16 +3,18 @@
 require "http/client"
 require "json"
 require "colorize"
+require "log"
+require "envyable"
 
 require "./akiko/**"
 
 module Akiko
-  VERSION = "0.1.0"
-  CONFIG  = "../config.yml"
+  VERSION = "0.1.5"
   SERVER  = "https://lichess.org"
 
   config = Akiko::Config.new
-  engines = config.read
 
-  puts engines
+  # Main
+  Log.info { "Akiko version :: #{VERSION}" }
+  Log.info { config }
 end
