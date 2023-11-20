@@ -1,8 +1,9 @@
-<img align="left" width="100" padding-right="6px" height="100" src="./readme/logo.png">
-
-# Akiko
-
+<h1 align="center">
+Akiko
+</h1>
+<p align="center">
 Lichess multi-bot interface, designed for performance and modularity.
+</p>
 
 ## Features
 
@@ -27,7 +28,6 @@ Lichess multi-bot interface, designed for performance and modularity.
 
 ## Usage
 
-WIP
 `akiko -h` will show you all the available flags and config options.
 
 ## Contributing
